@@ -5,10 +5,20 @@ import {
     createUserWithEmailAndPassword
 } from "firebase/auth";
 import { auth } from "../firebase.js";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                navigate("/homepage");
+            }
+        });
+    }, []);
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -20,8 +30,11 @@ export default function Login() {
 
     const handleSignIn = () => {
         signInWithEmailAndPassword(auth, email, password)
-          .catch((err) => alert(err.message));
-      };
+            .then(() => {
+                navigate("/homepage");
+            })
+            .catch((err) => alert(err.message));
+    };
 
     return (
         <div className="login">
