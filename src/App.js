@@ -1,12 +1,11 @@
 import './App.css';
-import Login from './components/login';
-import Homepage from './components/homepage';
+import Login from './components/Login';
+import Homepage from './components/Homepage';
 import { 
   BrowserRouter as Router, 
   Routes, 
   Route 
 } from "react-router-dom";
-
 
 function App() {
   return (
