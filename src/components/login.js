@@ -38,6 +38,7 @@ export default function Login() {
     };
 
     return (
+        <div>
         <div className="Auth-form-container"
             style={{ backgroundImage: 'url(' + require('../images/Dark_blue.jpg') + ')' }}>
             <h4 className="App-form-text">Todo App</h4>
@@ -74,6 +75,7 @@ export default function Login() {
                     </p>
                 </div>
             </div>
+        </div>
         </div>
     )
 }
