@@ -62,9 +62,9 @@ export default function Homepage() {
 
   // confirm edit
   const handleEditConfirm = () => {
-    update(ref(db, `/${auth.currentUser.uid}/${tempUidd}`),{
-      todo:todo,
-      tempUidd:tempUidd
+    update(ref(db, `/${auth.currentUser.uid}/${tempUidd}`), {
+      todo: todo,
+      tempUidd: tempUidd
     })
   };
 

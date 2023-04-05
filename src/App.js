@@ -1,6 +1,8 @@
 import './App.css';
 import Login from './components/Login';
 import Homepage from './components/Homepage';
+import "bootstrap/dist/css/bootstrap.min.css"
+
 import { 
   BrowserRouter as Router, 
   Routes, 
