@@ -1,5 +1,6 @@
 .Auth-form-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
@@ -9,9 +10,9 @@
 .App-form-text {
   text-align: center;
   margin-bottom: 1em;
-  font-size: 24px;
+  font-size: 50px;
   color: rgb(255, 255, 255);
-  font-weight: 800;
+  font-weight: 900;
 }
 
 .Auth-form {

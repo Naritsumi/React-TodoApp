@@ -5,6 +5,14 @@ import { useNavigate } from "react-router-dom";
 import { uid } from "uid";
 import { set, ref, onValue, remove, update } from "firebase/database";
 
+// Visuals
+import "./homepage.css";
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import CheckIcon from '@mui/icons-material/Check';
+
 export default function Homepage() {
   const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([]);
@@ -65,7 +73,10 @@ export default function Homepage() {
     update(ref(db, `/${auth.currentUser.uid}/${tempUidd}`), {
       todo: todo,
       tempUidd: tempUidd
-    })
+    });
+    
+    setTodo("");
+    setIsEdit(false);
   };
 
   //delete
@@ -74,32 +85,34 @@ export default function Homepage() {
   };
 
   return (
-    <div>
+    <div className="homepage"
+    style={{ backgroundImage: 'url(' + require('../images/Dark_blue.jpg') + ')' }}>
       <input
+        className='add-edit-input'
         type="text"
-        placeholder='Add todo...'
+        placeholder="Add todo..."
         value={todo}
         onChange={(e) => setTodo(e.target.value)}
       />
       {
         todos.map((todo) => (
-          <div>
+          <div className='todo'>
             <h1>{todo.todo}</h1>
-            <button onClick={() => handleUpdate(todo)}>Update</button>
-            <button onClick={() => handleDelete(todo.uidD)}>Delete</button>
+            <EditIcon onClick={() => handleUpdate(todo)} className="edit-button"/>
+            <DeleteIcon onClick={() => handleDelete(todo.uidD)} className="delete-button"/>
           </div>
         ))
       }
       {isEdit ? (
         <div>
-          <button onClick={handleEditConfirm}>Confirm</button>
+          <CheckIcon onClick={handleEditConfirm} className="add-confirm-icon"/>
         </div>
       ) : (
         <div>
-          <button onClick={writeToDoDatabase}>Add</button>
+          <AddIcon onClick={writeToDoDatabase} className="add-confirm-icon"/>
         </div>
       )}
-      <button onClick={handleSignOut}>Sign out</button>
+      <ExitToAppIcon onClick={handleSignOut} className="logout-icon"/>
     </div>
   )
 }

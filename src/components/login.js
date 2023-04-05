@@ -40,7 +40,7 @@ export default function Login() {
     return (
         <div className="Auth-form-container"
             style={{ backgroundImage: 'url(' + require('../images/Dark_blue.jpg') + ')' }}>
-            <h4 className="App-form-text">Todo App</h4>
+            <h1 className="App-form-text">Your Todo list</h1>
             <div className="Auth-form">
                 <div className="Auth-form-content">
                     <h3 className="Auth-form-title">Sign In</h3>
@@ -66,7 +66,7 @@ export default function Login() {
                     </div>
                     <div className="d-grid gap-2 mt-3">
                         <button type="submit" className="btn btn-primary" onClick={handleSignIn}>
-                            Sign in
+                            Submit
                         </button>
                     </div>
                     <p className="forgot-password text-right mt-2">
