@@ -129,12 +129,13 @@ export default function Homepage() {
                 todos.map((todo) => (
                   <ListGroup.Item
                     className="d-flex justify-content-between align-items-center">
-                    <div
-                      style={{
-                        textDecoration: 'none'
-                      }}>
-                      {todo.todo}
+                    <div>                          
+                      <Form.Check
+                        type="checkbox"
+                        style={{ textDecoration: 'none' }}
+                        label={todo.todo}/>                        
                     </div>
+
                     <div>
                       <Button
                         className="hover-button"
@@ -142,7 +143,7 @@ export default function Homepage() {
                         onClick={() => handleUpdate(todo)}
                         style={{ backgroundColor: 'transparent' }}>
                         <FaEdit
-                          className="text-edit"/>
+                          className="text-edit" />
                       </Button>
                       <Button
                         className="hover-button"
@@ -150,7 +151,7 @@ export default function Homepage() {
                         onClick={() => handleDelete(todo.uidD)}
                         style={{ backgroundColor: 'transparent' }}>
                         <FaTrash
-                          className="text-delete"/>
+                          className="text-delete" />
                       </Button>
                     </div>
                   </ListGroup.Item>
