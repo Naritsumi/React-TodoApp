@@ -4,7 +4,7 @@ import { auth, db } from "../firebase.js";
 import { useNavigate } from "react-router-dom";
 import { uid } from "uid";
 import { set, ref, onValue, remove, update } from "firebase/database";
-import { Container, Row, Col, ListGroup, Form, Button, Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Container, Row, Col, ListGroup, Form, Button, Navbar, Nav } from 'react-bootstrap';
 import { FaTrash, FaEdit, FaPlus, FaCheck, FaSignOutAlt } from 'react-icons/fa';
 
 import "./homepage.css";
@@ -14,6 +14,9 @@ export default function Homepage() {
   const [todos, setTodos] = useState([]);
   const [isEdit, setIsEdit] = useState(false);
   const [tempUidd, setTempUidd] = useState("");
+  
+const [checkedItems, setCheckedItems] = useState({});
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -129,13 +132,17 @@ export default function Homepage() {
                 todos.map((todo) => (
                   <ListGroup.Item
                     className="d-flex justify-content-between align-items-center">
-                    <div>                          
+                    <div>
                       <Form.Check
                         type="checkbox"
-                        style={{ textDecoration: 'none' }}
-                        label={todo.todo}/>                        
+                        label={todo.todo}
+                        checked={checkedItems[todo.uidD]}
+                        onChange={(e) =>
+                          setCheckedItems({ ...checkedItems, [todo.uidD]: e.target.checked })
+                        }
+                        className={checkedItems[todo.uidD] ? "my-form-check-checked" : "my-form-check"}
+                      />
                     </div>
-
                     <div>
                       <Button
                         className="hover-button"

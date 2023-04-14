@@ -13,18 +13,27 @@
     padding: 5px 10px;
 }
 
-.text-edit{ 
-    color: grey;   
+.text-edit {
+    color: grey;
 }
 
 .hover-button:hover .text-edit {
     color: rgb(26, 238, 107);
 }
 
-.text-delete{ 
-    color: grey;   
+.text-delete {
+    color: grey;
 }
 
 .hover-button:hover .text-delete {
     color: red;
+}
+
+.my-form-check-checked label {
+    text-decoration: line-through;
+    font-size: 20px;
+}
+
+.my-form-check label {
+    font-size: 20px;
 }
