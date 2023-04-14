@@ -14,8 +14,8 @@ export default function Homepage() {
   const [todos, setTodos] = useState([]);
   const [isEdit, setIsEdit] = useState(false);
   const [tempUidd, setTempUidd] = useState("");
-  
-const [checkedItems, setCheckedItems] = useState({});
+
+  const [checkedItems, setCheckedItems] = useState({});
 
   const navigate = useNavigate();
 
@@ -29,6 +29,7 @@ const [checkedItems, setCheckedItems] = useState({});
           if (data !== null) {
             Object.values(data).map((todo) => {
               setTodos((oldArray) => [...oldArray, todo]);
+              setCheckedItems((oldObject) => ({ ...oldObject, [todo.uidD]: todo.completed }));
             });
           }
         });
@@ -83,6 +84,12 @@ const [checkedItems, setCheckedItems] = useState({});
     remove(ref(db, `/${auth.currentUser.uid}/${uid}`))
   };
 
+  const handleCheckboxChange = (e, todo) => {
+    const { checked } = e.target;
+    setCheckedItems({ ...checkedItems, [todo.uidD]: checked });
+    set(ref(db, `/${auth.currentUser.uid}/${todo.uidD}/completed`), checked);
+  }
+
   return (
     <div className="homepage"
       style={{ backgroundImage: 'url(' + require('../images/Dark_blue.jpg') + ')' }}>
@@ -132,14 +139,13 @@ const [checkedItems, setCheckedItems] = useState({});
                 todos.map((todo) => (
                   <ListGroup.Item
                     className="d-flex justify-content-between align-items-center">
-                    <div>
+                    <div
+                      style={{ marginTop: "5px" }} >
                       <Form.Check
                         type="checkbox"
                         label={todo.todo}
                         checked={checkedItems[todo.uidD]}
-                        onChange={(e) =>
-                          setCheckedItems({ ...checkedItems, [todo.uidD]: e.target.checked })
-                        }
+                        onChange={(e) => handleCheckboxChange(e, todo)}
                         className={checkedItems[todo.uidD] ? "my-form-check-checked" : "my-form-check"}
                       />
                     </div>
