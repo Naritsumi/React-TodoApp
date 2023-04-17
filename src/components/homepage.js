@@ -23,7 +23,7 @@ export default function Homepage() {
     auth.onAuthStateChanged((user) => {
       if (user) {
         // read
-        onValue(ref(db, `/${auth.currentUser.uid}`), (snapshot) => {
+        onValue(ref(db, `/${auth.currentUser.uid}`).orderByChild('createdAt'), (snapshot) => {
           setTodos([]);
           const data = snapshot.val();
           if (data !== null) {
@@ -39,7 +39,6 @@ export default function Homepage() {
     });
   }, []);
 
-
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -52,10 +51,12 @@ export default function Homepage() {
 
   // add
   const writeToDoDatabase = () => {
-    const uidD = uid();
+    const uidD = uid();    
+    const createdAt = new Date().toISOString();
     set(ref(db, `/${auth.currentUser.uid}/${uidD}`), {
       todo: todo,
-      uidD: uidD
+      uidD: uidD,      
+      createdAt: createdAt
     });
 
     setTodo("");
