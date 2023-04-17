@@ -61,6 +61,12 @@ export default function Homepage() {
     setTodo("");
   };
 
+  // prevents enter event
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    writeToDoDatabase();
+  }
+
   // update
   const handleUpdate = (todo) => {
     setIsEdit(true);
@@ -115,7 +121,7 @@ export default function Homepage() {
         <Row className="justify-content-md-center">
           <Col md="8">
             <h1 className="text-center text-white my-4">To-Do App</h1>
-            <Form>
+            <Form onSubmit={handleSubmit}>
               <Form.Group>
                 <div class="input-group">
                   <Form.Control
@@ -138,7 +144,7 @@ export default function Homepage() {
                 </div>
               </Form.Group>
             </Form>
-            <ListGroup className="mt-5">
+            <ListGroup className="mt-4">
               {
                 todos.map((todo) => (
                   <ListGroup.Item
