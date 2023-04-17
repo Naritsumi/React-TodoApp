@@ -79,21 +79,28 @@ export default function Homepage() {
     setIsEdit(false);
   };
 
-  //delete
+  //  delete
   const handleDelete = (uid) => {
     remove(ref(db, `/${auth.currentUser.uid}/${uid}`))
   };
 
+  //  completed or not
   const handleCheckboxChange = (e, todo) => {
     const { checked } = e.target;
     setCheckedItems({ ...checkedItems, [todo.uidD]: checked });
     set(ref(db, `/${auth.currentUser.uid}/${todo.uidD}/completed`), checked);
   }
 
+  const countIncompleteTasks = () => {
+    const incompleteTasks = todos.filter((todo) => !todo.completed);
+    return incompleteTasks.length;
+  };
+
   return (
     <div className="homepage"
       style={{ backgroundImage: 'url(' + require('../images/Dark_blue.jpg') + ')' }}>
-      <Navbar expand="lg">
+      <Navbar expand="sm">
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <Button variant="danger"
@@ -110,19 +117,16 @@ export default function Homepage() {
             <h1 className="text-center text-white my-4">To-Do App</h1>
             <Form>
               <Form.Group>
-                <div class="row">
-                  <div class="col-11">
-                    <Form.Control
-                      type="text"
-                      placeholder="Add todo..."
-                      value={todo}
-                      onChange={(e) => setTodo(e.target.value)}
-                    />
-                  </div>
-                  <div class="col-1" >
+                <div class="input-group">
+                  <Form.Control
+                    type="text"
+                    placeholder="Add todo..."
+                    value={todo}
+                    onChange={(e) => setTodo(e.target.value)}
+                  />
+                  <div class="input-group-append">
                     {isEdit ? (
-                      <Button class="primary"
-                        onClick={handleEditConfirm}>
+                      <Button class="primary" onClick={handleEditConfirm}>
                         <FaCheck />
                       </Button>
                     ) : (
@@ -149,7 +153,7 @@ export default function Homepage() {
                         className={checkedItems[todo.uidD] ? "my-form-check-checked" : "my-form-check"}
                       />
                     </div>
-                    <div>
+                    <div className="d-flex align-self-center">
                       <Button
                         className="hover-button"
                         variant="primary-outline"
@@ -170,11 +174,13 @@ export default function Homepage() {
                   </ListGroup.Item>
                 ))
               }
+              <ListGroup.Item className="mt-2">
+                {countIncompleteTasks()} incomplete tasks
+              </ListGroup.Item>
             </ListGroup>
           </Col>
         </Row>
       </Container>
-
     </div>
   )
 }

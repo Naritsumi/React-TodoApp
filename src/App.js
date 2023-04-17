@@ -11,7 +11,7 @@ import {
 
 function App() {
   return (
-    <div className="app">
+    <div className="app container">
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
