@@ -16,6 +16,23 @@ export default function Homepage() {
   const [tempUidd, setTempUidd] = useState("");
 
   const [checkedItems, setCheckedItems] = useState({});
+  const [isDarkMode, setIsDarkMode] = useState(document.body.classList.contains('dark-mode'));
+
+  const toggleTheme = () => {
+    // toggle app
+    setIsDarkMode(!isDarkMode);
+    document.body.classList.toggle('dark-mode');
+    // toggle listgroup background
+    const listGroupItems = document.querySelectorAll('.list-group-item');
+    listGroupItems.forEach((item) => {
+      item.classList.toggle('dark-mode');
+    });
+    // toggle label listgroup
+    const formCheckItems = document.querySelectorAll('.my-form-check');
+    formCheckItems.forEach((item) => {
+      item.classList.toggle('dark-mode');
+    });
+  };
 
   const navigate = useNavigate();
 
@@ -54,7 +71,7 @@ export default function Homepage() {
   const writeToDoDatabase = () => {
     const uidD = uid();
     //const createdAt = new Date().toLocaleString("en-IE");
-    const createdAt = new Date().getTime(); 
+    const createdAt = new Date().getTime();
     //const createdAt = new Date().toLocaleString("en-US");
     set(ref(db, `/${auth.currentUser.uid}/${uidD}`), {
       todo: todo,
@@ -112,6 +129,11 @@ export default function Homepage() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
+            <Button 
+              variant="outline-secondary" 
+              onClick={toggleTheme}>
+              {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+            </Button>
             <Button variant="danger"
               onClick={handleSignOut}
               style={{ marginRight: '10px' }}>
@@ -167,7 +189,7 @@ export default function Homepage() {
                         className="hover-button"
                         variant="primary-outline"
                         onClick={() => handleUpdate(todo)}
-                        style={{ backgroundColor: 'transparent' }}>
+                        style={{ backgroundColor: 'transparent', padding: '0.35rem' }}>
                         <FaEdit
                           className="text-edit" />
                       </Button>
@@ -175,7 +197,7 @@ export default function Homepage() {
                         className="hover-button"
                         variant="danger-outline"
                         onClick={() => handleDelete(todo.uidD)}
-                        style={{ backgroundColor: 'transparent' }}>
+                        style={{ backgroundColor: 'transparent', padding: '0.30rem' }}>
                         <FaTrash
                           className="text-delete" />
                       </Button>
