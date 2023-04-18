@@ -16,22 +16,11 @@
     }
 
     .my-form-check label {
-        margin-top: -5px;
         font-size: 1.25rem;
     }
 
     .my-form-check-checked label {
-        margin-top: -5px;
         font-size: 1.25rem;
-    }
-
-    .ListGroup .text-edit,
-    .ListGroup .text-delete {
-        font-size: 1.5rem;
-    }
-
-    .ListGroup .btn {
-        padding: 0.5rem 1rem;
     }
 }
 
@@ -48,15 +37,6 @@
 
     .my-form-check-checked {
         font-size: 0.8rem;
-    }
-
-    .ListGroup .text-edit,
-    .ListGroup .text-delete {
-        font-size: 1.2rem;
-    }
-
-    .ListGroup .btn {
-        padding: 0.2rem 0.5rem;
     }
 }
 
@@ -88,9 +68,13 @@
 }
 
 .my-form-check-checked label {
+    display: auto;
+    margin-top: -5px;
     text-decoration: line-through;
 }
 
 .my-form-check label {
+    display: auto;
+    margin-top: -5px;
     text-decoration: none;
 }
