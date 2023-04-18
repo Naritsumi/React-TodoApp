@@ -1,5 +1,63 @@
 .homepage {
-    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(102, 126, 234, 0.5), rgba(118, 75, 162, 0.5));
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+}
+
+@media only screen and (min-width: 900px) {
+    /* Big style */
+    /* styles for devices with a minimum screen width of 900px */
+    .ListGroup {
+        margin-top: 6rem;
+    }
+
+    .my-form-check label {
+        margin-top: -5px;
+        font-size: 1.25rem;
+    }
+
+    .my-form-check-checked label {
+        margin-top: -5px;
+        font-size: 1.25rem;
+    }
+
+    .ListGroup .text-edit,
+    .ListGroup .text-delete {
+        font-size: 1.5rem;
+    }
+
+    .ListGroup .btn {
+        padding: 0.5rem 1rem;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    /* Small style */
+    /* styles for devices with a maximum screen width of 900px */
+    .ListGroup {
+        margin-top: 2rem;
+    }
+
+    .my-form-check {
+        font-size: 0.8rem;
+    }
+
+    .my-form-check-checked {
+        font-size: 0.8rem;
+    }
+
+    .ListGroup .text-edit,
+    .ListGroup .text-delete {
+        font-size: 1.2rem;
+    }
+
+    .ListGroup .btn {
+        padding: 0.2rem 0.5rem;
+    }
 }
 
 .todo {
@@ -31,11 +89,8 @@
 
 .my-form-check-checked label {
     text-decoration: line-through;
-    margin-top: -5px;
-    font-size: 20px;
 }
 
 .my-form-check label {
-    margin-top: -5px;
-    font-size: 20px;
+    text-decoration: none;
 }

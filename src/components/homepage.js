@@ -23,11 +23,12 @@ export default function Homepage() {
     auth.onAuthStateChanged((user) => {
       if (user) {
         // read
-        onValue(ref(db, `/${auth.currentUser.uid}`).orderByChild('createdAt'), (snapshot) => {
+        onValue(ref(db, `${auth.currentUser.uid}`), (snapshot) => {
           setTodos([]);
           const data = snapshot.val();
           if (data !== null) {
-            Object.values(data).map((todo) => {
+            const sortedData = Object.values(data).sort((a, b) => b.createdAt - a.createdAt);
+            sortedData.map((todo) => {
               setTodos((oldArray) => [...oldArray, todo]);
               setCheckedItems((oldObject) => ({ ...oldObject, [todo.uidD]: todo.completed }));
             });
@@ -51,11 +52,13 @@ export default function Homepage() {
 
   // add
   const writeToDoDatabase = () => {
-    const uidD = uid();    
-    const createdAt = new Date().toISOString();
+    const uidD = uid();
+    //const createdAt = new Date().toLocaleString("en-IE");
+    const createdAt = new Date().getTime(); 
+    //const createdAt = new Date().toLocaleString("en-US");
     set(ref(db, `/${auth.currentUser.uid}/${uidD}`), {
       todo: todo,
-      uidD: uidD,      
+      uidD: uidD,
       createdAt: createdAt
     });
 
@@ -104,8 +107,7 @@ export default function Homepage() {
   };
 
   return (
-    <div className="homepage"
-      style={{ backgroundImage: 'url(' + require('../images/Dark_blue.jpg') + ')' }}>
+    <div className="homepage">
       <Navbar expand="sm">
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
