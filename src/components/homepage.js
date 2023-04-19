@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { uid } from "uid";
 import { set, ref, onValue, remove, update } from "firebase/database";
 import { Container, Row, Col, ListGroup, Form, Button, Navbar, Nav } from 'react-bootstrap';
-import { FaTrash, FaEdit, FaPlus, FaCheck, FaSignOutAlt } from 'react-icons/fa';
+import { FaTrash, FaEdit, FaPlus, FaCheck, FaSignOutAlt, FaMoon, FaSun } from 'react-icons/fa';
 
 import "./homepage.css";
 
@@ -129,11 +129,23 @@ export default function Homepage() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <Button 
-              variant="outline-secondary" 
-              onClick={toggleTheme}>
-              {isDarkMode ? 'Light Mode' : 'Dark Mode'}
-            </Button>
+            <div class="input-group-append">
+              {isDarkMode ? (
+                <Button
+                  style={{ backgroundColor: '#2C7CFF' }}
+                  variant="outline-secondary"
+                  onClick={toggleTheme}>
+                  <FaSun className='button-sun' />
+                </Button>
+              ) : (
+                <Button
+                  style={{ backgroundColor: '#444444' }}
+                  variant="outline-secondary"
+                  onClick={toggleTheme}>
+                  <FaMoon className='button-moon' />
+                </Button>
+              )}
+            </div>
             <Button variant="danger"
               onClick={handleSignOut}
               style={{ marginRight: '10px' }}>

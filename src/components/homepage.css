@@ -110,5 +110,13 @@ body.dark-mode {
 
 /* Dark mode */
 .my-form-check.dark-mode .form-check-label {
-    color: #fff;
+    color: #dbdbdb;
+}
+
+.button-sun {
+    color: rgb(255, 208, 0)
+}
+
+.button-moon {
+    color: rgb(255, 255, 255);
 }
