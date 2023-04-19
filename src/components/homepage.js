@@ -193,7 +193,7 @@ export default function Homepage() {
                         label={todo.todo}
                         checked={checkedItems[todo.uidD]}
                         onChange={(e) => handleCheckboxChange(e, todo)}
-                        className={checkedItems[todo.uidD] ? "my-form-check-checked" : "my-form-check"}
+                        className={checkedItems[todo.uidD] ? "my-form-check-checked" : "my-form-check" + (isDarkMode ? " dark-mode" : "")}
                       />
                     </div>
                     <div className="d-flex align-self-center">

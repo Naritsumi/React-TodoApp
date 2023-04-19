@@ -91,26 +91,31 @@ body.dark-mode {
     color: red;
 }
 
-.my-form-check-checked label {
-    display: auto;
-    margin-top: -5px;
-    text-decoration: line-through;
-}
-
-.my-form-check label {
+/* Light mode */
+.my-form-check .form-check-label {
     display: auto;
     margin-top: -5px;
     text-decoration: none;
 }
 
-/* Light mode */
-.my-form-check .form-check-label {
-    color: #000;
+.my-form-check-checked .form-check-label {
+    display: auto;
+    margin-top: -5px;
+    text-decoration: line-through;
+    color: #757575;
 }
 
 /* Dark mode */
 .my-form-check.dark-mode .form-check-label {
-    color: #dbdbdb;
+    color: #f0f0f0;
+}
+
+.my-form-check.dark-mode:not(:checked) + .form-check-label {
+    background-color: #ffffff; /* set the background color to white */
+}
+
+.my-form-check-checked.dark-mode .form-check-label {
+    color: #757575;
 }
 
 .button-sun {
