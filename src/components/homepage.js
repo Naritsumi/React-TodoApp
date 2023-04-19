@@ -8,6 +8,8 @@ import { Container, Row, Col, ListGroup, Form, Button, Navbar, Nav } from 'react
 import { FaTrash, FaEdit, FaPlus, FaCheck, FaSignOutAlt, FaMoon, FaSun } from 'react-icons/fa';
 
 import "./homepage.css";
+import empty from '../images/empty.jpg'; // import your image file
+
 
 export default function Homepage() {
   const [todo, setTodo] = useState("");
@@ -181,46 +183,64 @@ export default function Homepage() {
                 </div>
               </Form.Group>
             </Form>
-            <ListGroup className="mt-4">
-              {
-                todos.map((todo) => (
-                  <ListGroup.Item
-                    className="d-flex justify-content-between align-items-center">
-                    <div
-                      style={{ marginTop: "5px" }} >
-                      <Form.Check
-                        type="checkbox"
-                        label={todo.todo}
-                        checked={checkedItems[todo.uidD]}
-                        onChange={(e) => handleCheckboxChange(e, todo)}
-                        className={checkedItems[todo.uidD] ? "my-form-check-checked" : "my-form-check" + (isDarkMode ? " dark-mode" : "")}
-                      />
-                    </div>
-                    <div className="d-flex align-self-center">
-                      <Button
-                        className="hover-button"
-                        variant="primary-outline"
-                        onClick={() => handleUpdate(todo)}
-                        style={{ backgroundColor: 'transparent', padding: '0.35rem' }}>
-                        <FaEdit
-                          className="text-edit" />
-                      </Button>
-                      <Button
-                        className="hover-button"
-                        variant="danger-outline"
-                        onClick={() => handleDelete(todo.uidD)}
-                        style={{ backgroundColor: 'transparent', padding: '0.30rem' }}>
-                        <FaTrash
-                          className="text-delete" />
-                      </Button>
-                    </div>
-                  </ListGroup.Item>
-                ))
-              }
-              <ListGroup.Item className="mt-2">
-                {countIncompleteTasks()} incomplete tasks
-              </ListGroup.Item>
-            </ListGroup>
+            {todos.length === 0 && (
+                 <div 
+                 className="d-flex 
+                 flex-column 
+                 align-items-center 
+                 justify-content-center 
+                 w-100 h-90
+                 bg-white 
+                 rounded
+                 mt-2
+                 pt-4
+                 pb-5">
+               <div className="text-center text-dark mt-2 pb-3" style={{ fontSize: '25px' }}>Well done!</div>
+               <img src={empty} alt="no tasks" />
+             </div>
+            )}
+            {todos.length > 0 && (
+              <ListGroup className="mt-4">
+                {
+                  todos.map((todo) => (
+                    <ListGroup.Item
+                      className="d-flex justify-content-between align-items-center">
+                      <div
+                        style={{ marginTop: "5px" }} >
+                        <Form.Check
+                          type="checkbox"
+                          label={todo.todo}
+                          checked={checkedItems[todo.uidD]}
+                          onChange={(e) => handleCheckboxChange(e, todo)}
+                          className={checkedItems[todo.uidD] ? "my-form-check-checked" : "my-form-check" + (isDarkMode ? " dark-mode" : "")}
+                        />
+                      </div>
+                      <div className="d-flex align-self-center">
+                        <Button
+                          className="hover-button"
+                          variant="primary-outline"
+                          onClick={() => handleUpdate(todo)}
+                          style={{ backgroundColor: 'transparent', padding: '0.35rem' }}>
+                          <FaEdit
+                            className="text-edit" />
+                        </Button>
+                        <Button
+                          className="hover-button"
+                          variant="danger-outline"
+                          onClick={() => handleDelete(todo.uidD)}
+                          style={{ backgroundColor: 'transparent', padding: '0.30rem' }}>
+                          <FaTrash
+                            className="text-delete" />
+                        </Button>
+                      </div>
+                    </ListGroup.Item>
+                  ))
+                }
+                <ListGroup.Item className="mt-2">
+                  {countIncompleteTasks()} incomplete tasks
+                </ListGroup.Item>
+              </ListGroup>
+            )}
           </Col>
         </Row>
       </Container>
