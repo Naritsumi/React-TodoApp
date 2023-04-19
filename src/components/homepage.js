@@ -127,11 +127,10 @@ export default function Homepage() {
 
   return (
     <div className="homepage">
-      <Navbar expand="sm">
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar expand="sm" className="justify-content-end ms-2 me-2" >
+        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            <div class="input-group-append">
               {isDarkMode ? (
                 <Button
                   style={{ backgroundColor: '#2C7CFF' }}
@@ -147,12 +146,11 @@ export default function Homepage() {
                   <FaMoon className='button-moon' />
                 </Button>
               )}
-            </div>
-            <Button variant="danger"
-              onClick={handleSignOut}
-              style={{ marginRight: '10px' }}>
-              <FaSignOutAlt />
-            </Button>
+              <Button
+                variant="danger"
+                onClick={handleSignOut}>
+                <FaSignOutAlt />
+              </Button>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -184,20 +182,11 @@ export default function Homepage() {
               </Form.Group>
             </Form>
             {todos.length === 0 && (
-                 <div 
-                 className="d-flex 
-                 flex-column 
-                 align-items-center 
-                 justify-content-center 
-                 w-100 h-90
-                 bg-white 
-                 rounded
-                 mt-2
-                 pt-4
-                 pb-5">
-               <div className="text-center text-dark mt-2 pb-3" style={{ fontSize: '25px' }}>Well done!</div>
-               <img src={empty} alt="no tasks" />
-             </div>
+              <div
+                className="d-flex flex-column align-items-center justify-content-center w-100 h-90 bg-white rounded mt-4 pt-4 pb-5">
+                <div className="text-center text-dark mt-2 pb-3" style={{ fontSize: '25px' }}>Well done!</div>
+                <img src={empty} alt="no tasks" />
+              </div>
             )}
             {todos.length > 0 && (
               <ListGroup className="mt-4">

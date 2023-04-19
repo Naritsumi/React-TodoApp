@@ -9,6 +9,11 @@
     min-height: 100%;
 }
 
+body.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
 @media only screen and (min-width: 900px) {
 
     /* Big style */
@@ -44,11 +49,6 @@
 }
 
 .btn-theme-toggle {
-    color: #fff;
-}
-
-body.dark-mode {
-    background-color: #333;
     color: #fff;
 }
 
