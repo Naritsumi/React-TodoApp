@@ -63,18 +63,6 @@ body.dark-mode {
     padding: 5px 10px;
 }
 
-/* Light mode */
-.list-group-item {
-    background-color: #fff;
-    color: #000;
-}
-
-/* Dark mode */
-.list-group-item.dark-mode {
-    background-color: #333;
-    color: #fff;
-}
-
 .text-edit {
     color: grey;
 }
@@ -92,6 +80,11 @@ body.dark-mode {
 }
 
 /* Light mode */
+.list-group-item {
+    background-color: #fff;
+    color: #000;
+}
+
 .my-form-check .form-check-label {
     display: auto;
     margin-top: -5px;
@@ -106,12 +99,17 @@ body.dark-mode {
 }
 
 /* Dark mode */
+.list-group-item.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
 .my-form-check.dark-mode .form-check-label {
     color: #f0f0f0;
 }
 
-.my-form-check.dark-mode:not(:checked) + .form-check-label {
-    background-color: #ffffff; /* set the background color to white */
+.my-form-check.dark-mode:not(:checked)+.form-check-label {
+    background-color: #ffffff;
 }
 
 .my-form-check-checked.dark-mode .form-check-label {

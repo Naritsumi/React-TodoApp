@@ -7,9 +7,9 @@ import { set, ref, onValue, remove, update } from "firebase/database";
 import { Container, Row, Col, ListGroup, Form, Button, Navbar, Nav } from 'react-bootstrap';
 import { FaTrash, FaEdit, FaPlus, FaCheck, FaSignOutAlt, FaMoon, FaSun } from 'react-icons/fa';
 
+// Visuals
 import "./homepage.css";
-import empty from '../images/empty.jpg'; // import your image file
-
+import empty from '../images/empty.jpg'; 
 
 export default function Homepage() {
   const [todo, setTodo] = useState("");
@@ -20,8 +20,8 @@ export default function Homepage() {
   const [checkedItems, setCheckedItems] = useState({});
   const [isDarkMode, setIsDarkMode] = useState(document.body.classList.contains('dark-mode'));
 
+  // toggle app
   const toggleTheme = () => {
-    // toggle app
     setIsDarkMode(!isDarkMode);
     document.body.classList.toggle('dark-mode');
     // toggle listgroup background
@@ -38,6 +38,7 @@ export default function Homepage() {
 
   const navigate = useNavigate();
 
+  // query display data and order by datetime 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
@@ -63,6 +64,7 @@ export default function Homepage() {
     });
   }, []);
 
+  // log out
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -81,6 +83,7 @@ export default function Homepage() {
     set(ref(db, `/${auth.currentUser.uid}/${uidD}`), {
       todo: todo,
       uidD: uidD,
+      completed: false,
       createdAt: createdAt
     });
 
@@ -196,6 +199,8 @@ export default function Homepage() {
                 {
                   todos.map((todo) => (
                     <ListGroup.Item
+                      //to ensure consistent background color
+                      style={{ backgroundColor: isDarkMode ? "#333333" : "white" }}
                       className="d-flex justify-content-between align-items-center">
                       <div
                         style={{ marginTop: "5px" }} >
