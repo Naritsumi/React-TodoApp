@@ -46,7 +46,11 @@ export default function Homepage() {
           setTodos([]);
           const data = snapshot.val();
           if (data !== null) {
-            const sortedData = Object.values(data).sort((a, b) => b.createdAt - a.createdAt);
+            const sortedData = Object.values(data).sort((a, b) => {
+              const dateA = new Date(a.createdAt).getTime();
+              const dateB = new Date(b.createdAt).getTime();
+              return dateB - dateA;
+            });
             sortedData.map((todo) => {
               setTodos((oldArray) => [...oldArray, todo]);
               setCheckedItems((oldObject) => ({ ...oldObject, [todo.uidD]: todo.completed }));
@@ -72,9 +76,8 @@ export default function Homepage() {
   // add
   const writeToDoDatabase = () => {
     const uidD = uid();
-    //const createdAt = new Date().toLocaleString("en-IE");
-    const createdAt = new Date().getTime();
-    //const createdAt = new Date().toLocaleString("en-US");
+    const currentDate = new Date();
+    const createdAt = currentDate.toISOString();
     set(ref(db, `/${auth.currentUser.uid}/${uidD}`), {
       todo: todo,
       uidD: uidD,
@@ -128,29 +131,29 @@ export default function Homepage() {
   return (
     <div className="homepage">
       <Navbar expand="sm" className="justify-content-end ms-2 me-2" >
-        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-              {isDarkMode ? (
-                <Button
-                  style={{ backgroundColor: '#2C7CFF' }}
-                  variant="outline-secondary"
-                  onClick={toggleTheme}>
-                  <FaSun className='button-sun' />
-                </Button>
-              ) : (
-                <Button
-                  style={{ backgroundColor: '#444444' }}
-                  variant="outline-secondary"
-                  onClick={toggleTheme}>
-                  <FaMoon className='button-moon' />
-                </Button>
-              )}
+            {isDarkMode ? (
               <Button
-                variant="danger"
-                onClick={handleSignOut}>
-                <FaSignOutAlt />
+                style={{ backgroundColor: '#2C7CFF' }}
+                variant="outline-secondary"
+                onClick={toggleTheme}>
+                <FaSun className='button-sun' />
               </Button>
+            ) : (
+              <Button
+                style={{ backgroundColor: '#444444' }}
+                variant="outline-secondary"
+                onClick={toggleTheme}>
+                <FaMoon className='button-moon' />
+              </Button>
+            )}
+            <Button
+              variant="danger"
+              onClick={handleSignOut}>
+              <FaSignOutAlt />
+            </Button>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
