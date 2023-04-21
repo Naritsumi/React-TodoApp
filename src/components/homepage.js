@@ -233,8 +233,8 @@ export default function Homepage() {
                     </ListGroup.Item>
                   ))
                 }
-                <ListGroup.Item className="mt-2">
-                  {countIncompleteTasks()} incomplete tasks
+                <ListGroup.Item className={(isDarkMode ? "mt-2 incomplete-tasks dark-mode" : "mt-2 incomplete-tasks")}>
+                  <label>{countIncompleteTasks()} incomplete tasks</label>
                 </ListGroup.Item>
               </ListGroup>
             )}

@@ -14,6 +14,11 @@ body.dark-mode {
     color: #fff;
 }
 
+label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
 @media only screen and (min-width: 900px) {
 
     /* Big style */
@@ -52,6 +57,14 @@ body.dark-mode {
     color: #fff;
 }
 
+.button-sun {
+    color: rgb(255, 208, 0)
+}
+
+.button-moon {
+    color: rgb(255, 255, 255);
+}
+
 .todo {
     display: flex;
     margin-bottom: 5px;
@@ -82,13 +95,14 @@ body.dark-mode {
 /* Light mode */
 .list-group-item {
     background-color: #fff;
-    color: #000;
 }
 
 .my-form-check .form-check-label {
     display: auto;
     margin-top: -5px;
     text-decoration: none;
+    color: #5f64c9;
+    text-shadow: 1px 1px 2px rgba(133, 133, 133, 0.2);
 }
 
 .my-form-check-checked .form-check-label {
@@ -96,6 +110,12 @@ body.dark-mode {
     margin-top: -5px;
     text-decoration: line-through;
     color: #757575;
+}
+
+.incomplete-tasks label {
+    display: auto;
+    margin-top: -5px;
+    color: #5a5eb4;
 }
 
 /* Dark mode */
@@ -116,10 +136,8 @@ body.dark-mode {
     color: #757575;
 }
 
-.button-sun {
-    color: rgb(255, 208, 0)
-}
-
-.button-moon {
-    color: rgb(255, 255, 255);
+.incomplete-tasks.dark-mode label {
+    display: auto;
+    margin-top: -5px;
+    color: #ffffff;
 }

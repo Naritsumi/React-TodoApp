@@ -42,9 +42,8 @@ export default function Login() {
             <h1 className="App-form-text">Welcome!</h1>
             <div className="Auth-form">
                 <div className="Auth-form-content">
-                    <h3 className="Auth-form-title">Sign In</h3>
                     <div className="form-group mt-3">
-                        <label>Email address</label>
+                        <label className="Auth-label">Email address</label>
                         <input
                             type="email"
                             className="form-control mt-1"
@@ -54,7 +53,7 @@ export default function Login() {
                         />
                     </div>
                     <div className="form-group mt-3">
-                        <label>Password</label>
+                        <label className="Auth-label">Password</label>
                         <input
                             type="password"
                             className="form-control mt-1"
@@ -64,7 +63,7 @@ export default function Login() {
                         />
                     </div>
                     <div className="d-grid gap-2 mt-3">
-                        <button type="submit" className="btn btn-primary" onClick={handleSignIn}>
+                        <button type="submit" className="w-100 mt-3 gradient-button" onClick={handleSignIn}>
                             Submit
                         </button>
                     </div>
