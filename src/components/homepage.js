@@ -163,7 +163,7 @@ export default function Homepage() {
       <Container>
         <Row className="justify-content-md-center">
           <Col md="8">
-            <h1 className="text-center text-white my-4">To-Do App</h1>
+            <h1 className="text-center text-white my-4 homepage-title">To-Do App</h1>
             <Form onSubmit={handleSubmit}>
               <Form.Group>
                 <div class="input-group">
