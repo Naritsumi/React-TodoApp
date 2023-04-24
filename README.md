@@ -1,8 +1,6 @@
 # Todo app
 
-## Stack
-
-- 
+![my badge](https://badgen.net/badge/npm/9.4.0/blue) ![my badge](https://badgen.net/npm/types/react) [![my badge](https://badgen.net/github/license/micromatch/micromatch)](https://github.com/Naritsumi/React-TodoApp/blob/main/LICENSE)
 
 ## Deploying to Firebase
 #### Prerequisites:
