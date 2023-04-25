@@ -5,7 +5,7 @@
   <br></br>
   <img src="https://badgen.net/badge/npm/9.4.0/blue">  
   <img src="https://badgen.net/npm/types/react">
-  <a href="https://github.com/Naritsumi/React-TodoApp/blob/main/LICENSE"><img src="https://badgen.net/github/license/micromatch/micromatch"></a>
+  <a href="https://github.com/Naritsumi/React-TodoApp/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
 </p>
 
 # Live App Demo
