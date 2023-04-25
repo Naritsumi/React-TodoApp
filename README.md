@@ -1,4 +1,5 @@
 # React To-Do App
+A simple To-do app with ReactJS, React-Bootstrap and Firebase, mobile responsive and easy to use.
 
 <p align="center">
   <img src="https://github.com/Naritsumi/React-TodoApp/blob/main/Demo.jpg?raw=true">
