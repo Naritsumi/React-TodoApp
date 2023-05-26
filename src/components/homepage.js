@@ -90,12 +90,6 @@ export default function Homepage() {
     setTodo("");
   };
 
-  // prevents enter event
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    writeToDoDatabase();
-  }
-
   // update
   const handleUpdate = (todo) => {
     setIsEdit(true);
@@ -113,6 +107,17 @@ export default function Homepage() {
     setTodo("");
     setIsEdit(false);
   };
+
+  // prevents enter event
+  const handleSubmit = (e) => {
+    e.preventDefault();     
+    
+    if (isEdit) {
+      handleEditConfirm();
+    } else {
+      writeToDoDatabase();
+    }
+  }
 
   //  delete
   const handleDelete = (uid) => {
