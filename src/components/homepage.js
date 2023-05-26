@@ -200,7 +200,8 @@ export default function Homepage() {
               </div>
             )}
             {todos.length > 0 && (
-              <ListGroup className="mt-4">
+              <div className="mt-3 todos-scroll">
+              <ListGroup className="">
                 {
                   todos.map((todo) => (
                     <ListGroup.Item
@@ -241,7 +242,8 @@ export default function Homepage() {
                 <ListGroup.Item className={(isDarkMode ? "mt-2 incomplete-tasks dark-mode" : "mt-2 incomplete-tasks")}>
                   <label>{countIncompleteTasks()} incomplete tasks</label>
                 </ListGroup.Item>
-              </ListGroup>
+              </ListGroup>              
+              </div>
             )}
           </Col>
         </Row>
